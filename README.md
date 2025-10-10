@@ -2,49 +2,49 @@
 
 A simple Python-based personal voice assistant that listens to your voice commands and performs tasks like searching Wikipedia, opening websites or apps, and telling the current time.
 
-🚀 Features
+🚀 Features:
 
-🗣️ Voice interaction using speech_recognition and pyttsx3
+-> Voice interaction using speech_recognition and pyttsx3
 
-🌐 Searches information from Wikipedia
+-> Searches information from Wikipedia
 
-🔗 Opens websites (YouTube, Google) and desktop apps (Chrome, WhatsApp, JioSaavn, VS Code)
+->  Opens websites (YouTube, Google) and desktop apps (Chrome, WhatsApp, JioSaavn, VS Code)
 
-⏰ Tells the current time
+->  Tells the current time
 
-💬 Greets you based on the time of day
+->  Greets you based on the time of day
 
-🧩 Requirements
+Requirements:
 
 Install dependencies with:
 
-pip install pyttsx3, SpeechRecognition, pyaudio, wikipedia
+    pip install pyttsx3, SpeechRecognition, pyaudio, wikipedia
 
-🛠️ How to Run
+🛠️ How to Run:
 
-Save the script as jarvis.py
+    Save the script as jarvis.py
 
 Run in terminal:
 
-python jarvis.py
+    python jarvis.py
 
 
 Speak commands like:
 
-“Wikipedia Albert Einstein”
+    “Wikipedia Albert Einstein”
 
-“Open YouTube”
+    “Open YouTube”
 
-“What’s the time?”
+    “What’s the time?”
 
-“Open VS Code”
+    “Open VS Code”
 
 ⚙️ Main Modules Used
 
-pyttsx3 – text-to-speech engine
+    pyttsx3 – text-to-speech engine
 
-speech_recognition – converts speech to text
+    speech_recognition – converts speech to text
 
-wikipedia – fetches summaries
+    wikipedia – fetches summaries
 
-webbrowser / os – opens links and applications
+    webbrowser / os – opens links and applications
