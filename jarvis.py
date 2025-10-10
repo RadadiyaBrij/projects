@@ -6,12 +6,13 @@ import wikipedia
 import webbrowser
 import os 
 
+
 def open_link(link_path):
  os.startfile(link_path)
 engine = pyttsx3.init('sapi5')
 voices=engine.getProperty('voices')
 # print(voices[0].id)
-engine.setProperty('voice',voices[1].id)
+engine.setProperty('voice',voices[0].id)
 
 def speak(audio):
     engine.say(audio)
@@ -45,7 +46,6 @@ def takecommand():
         return "None"
     return query
 
-
 if __name__=="__main__":
     wishme()
     speak("I am jarvis.How can i help you?")
@@ -55,10 +55,25 @@ if __name__=="__main__":
         if 'wikipedia' in query:
             speak('Searching wikipedia...')
             query = query.replace("wikipedia","")
-            results = wikipedia.summary(query,sentences=5)
-            print(results)
-            speak(results)
+            if not query:
+               speak("What should I search on Wikipedia?")
+               query = takecommand().lower()
+            try:
+              results = wikipedia.summary(query, sentences=5)
+              print(results)
+              speak(results)
+            except wikipedia.exceptions.DisambiguationError as e:
+             speak("There are multiple results for that topic. Please be more specific.")
+             print("Options:", e.options)
 
+            except wikipedia.exceptions.PageError:
+             speak("Sorry, I couldn’t find any page about that. Please try another topic.")
+             print("Page not found. Listening again...")
+
+            except Exception as e:
+             speak("An error occurred while searching. Please try again.")
+             print(f"Error: {e}")
+        
         elif 'open youtube' in query:
             # webbrowser.open("youtube.com") 
             open_link(r"https://www.youtube.com/")
@@ -81,20 +96,4 @@ if __name__=="__main__":
 
         elif 'open vs code' in query:
             vscodepath ="C:\\Users\\BAPS\\AppData\\Local\\Programs\\Microsoft VS Code\\Code.exe"
-            os.startfile(vscodepath)  
-
-# import smtplib
-        # elif 'send email' in query:
-        #     try:
-        #         speak("what should i say")
-        #         content = takecommand()
-        #         to = "crackgo96@gmail.com"
-        #         sendEmail(to,content)
-        #         speak("Email has been sent.")
-        #     except Exception as e:
-        #         print(e)
-        #         speak("Sorry. i am not able to send this email")
-
-
-# if __name__=="__main__":
-#     speak("Congratulations")
+            os.startfile(vscodepath) 
